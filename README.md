@@ -1,7 +1,7 @@
 QA Tools Frontend Sandbox
 =========================
 
-Project to test QA-tools for front-end code.
+Project to test [Ibuildings QA-tools](https://github.com/ibuildingsnl/qa-tools) for front-end code.
 
 
 Usage
