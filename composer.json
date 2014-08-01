@@ -1,0 +1,15 @@
+{
+    "name": "ibuildings/qaporjecttest",
+    "description": "Test for QA-Tools and grunt",
+    "require-dev": {
+        "ibuildings/qa-tools": "~1.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin de Keijzer",
+            "email": "mdkeijzer@ibuildings.nl"
+        }
+    ],
+    "minimum-stability": "dev"
+}

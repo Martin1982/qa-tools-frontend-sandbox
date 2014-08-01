@@ -1,0 +1,58 @@
+{
+	"composerBinDir": "vendor\/bin",
+	"projectName": "Qaproject",
+	"buildArtifacts": {
+		"enabled": true,
+		"path": "build\/artifacts"
+	},
+	"travis": {
+		"enabled": true,
+		"phpVersions": {
+			"2": "5.5",
+			"3": "5.4",
+			"4": "5.3"
+		},
+		"env": {
+			"enabled": false
+		},
+		"slack": {
+			"enabled": false
+		}
+	},
+	"enablePhpTools": true,
+	"enableComposer": true,
+	"enablePhpLint": true,
+	"enablePhpMessDetector": true,
+	"phpMdExcludePatterns": [
+
+	],
+	"enablePhpCodeSniffer": true,
+	"phpCodeSnifferCodingStyle": "PSR2",
+	"phpCsExcludeSymfony": false,
+	"phpCsExcludeCustomPatterns": [
+
+	],
+	"phpCsExcludePatterns": [
+
+	],
+	"enablePhpCopyPasteDetection": true,
+	"phpCpdExcludePatterns": [
+
+	],
+	"enablePhpSecurityChecker": false,
+	"phpSrcPath": [
+		"src"
+	],
+	"enablePhpUnit": true,
+	"customPhpUnitXml": false,
+	"phpTestsPath": [
+		"tests"
+	],
+	"enablePhpUnitAutoload": false,
+	"enableJsTools": true,
+	"enableJsHint": false,
+	"enableBehat": false,
+	"enablePreCommitHook": false,
+	"md5Command": "md5",
+	"_qa_tools_run_completed": true
+}
