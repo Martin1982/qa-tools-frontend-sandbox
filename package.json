@@ -1,0 +1,22 @@
+{
+  "name": "qaproject",
+  "version": "0.0.0",
+  "description": "QA test project",
+  "main": "src/index.html",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Martin de Keijzer",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-csslint": "^0.2.0",
+    "grunt-contrib-jshint": "^0.10.0"
+  }
+}
