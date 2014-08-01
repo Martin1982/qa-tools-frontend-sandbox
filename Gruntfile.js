@@ -9,15 +9,35 @@ module.exports = function(grunt) {
     },
     csslint: {
         src: ['src/**/*.css']
+    },
+    qunit: {
+      all: {
+          options: {
+              urls: [
+                  'http://localhost:8000/tests/first.html',
+              ]
+          }
+      }
+    },
+    connect: {
+      server: {
+          options: {
+              port: 8000,
+              base: '.'
+          }
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-csslint');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
 
   // Runnable task(s).
-  grunt.registerTask('default', []);
-  grunt.registerTask('qa', ['jshint', 'csslint']);
+  grunt.registerTask('default', ['pre-deploy', 'qa']);
+  grunt.registerTask('unittest', ['connect', 'qunit']);
+  grunt.registerTask('qa', ['jshint', 'csslint', 'unittest']);
   grunt.registerTask('pre-deploy', []);
 };
