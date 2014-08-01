@@ -3,7 +3,7 @@
 <project name="Qaproject-pre-commit" default="build">
 
     <target name="build"
-            depends="prepare-environment,php-lint,jshint,phpmd,phpcs,phpunit"/>
+            depends="prepare-environment,php-lint,grunt,phpmd,phpcs,phpunit"/>
 
     <target name="prepare-environment" depends="set-test-tree-location,get-changeset,composer-run-install">
         <echo message="OK"/>
@@ -147,11 +147,9 @@
         <echo message="OK"/>
     </target>
 
-    <target name="jshint" depends="set-test-tree-location,get-changeset.js-absolute.spacesep" if="changeset.js.notempty">
-        <exec executable="node" failonerror="true">
-            <arg value="${test-tree-location}/vendor/bin/jshint"/>
-            <arg value="--config=${test-tree-location}/.jshintrc"/>
-            <arg line="${changeset.js.absolute.spacesep}"/>
+    <target name="grunt" depends="set-test-tree-location,get-changeset.js-absolute.spacesep" if="changeset.js.notempty">
+        <exec executable="grunt" failonerror="true">
+            <arg value="qa"/>
         </exec>
         <echo message="OK"/>
     </target>
