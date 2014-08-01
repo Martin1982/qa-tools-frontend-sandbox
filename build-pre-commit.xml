@@ -147,7 +147,7 @@
         <echo message="OK"/>
     </target>
 
-    <target name="grunt" depends="set-test-tree-location,get-changeset.js-absolute.spacesep" if="changeset.js.notempty">
+    <target name="grunt" depends="set-test-tree-location">
         <exec executable="grunt" failonerror="true">
             <arg value="qa"/>
         </exec>
