@@ -29,3 +29,4 @@ xhr.onload = function(e) {
     console.log(parsed);
 };
 xhr.send(data);
+console.log(data)
