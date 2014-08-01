@@ -46,13 +46,14 @@
 	"enablePhpUnit": true,
 	"customPhpUnitXml": false,
 	"phpTestsPath": [
-		"tests"
+
 	],
 	"enablePhpUnitAutoload": false,
 	"enableJsTools": true,
-	"enableJsHint": false,
+	"enableJsHint": true,
 	"enableBehat": false,
-	"enablePreCommitHook": false,
+	"enablePreCommitHook": true,
 	"md5Command": "md5",
-	"_qa_tools_run_completed": true
+	"_qa_tools_run_completed": true,
+	"javaScriptSrcPath": "src"
 }

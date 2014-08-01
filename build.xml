@@ -2,7 +2,7 @@
 
 <project name="Qaproject-ci" default="build">
         <target name="build"
-            depends="prepare,php-lint-ci,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit-ci"/>
+            depends="prepare,php-lint-ci,jshint-ci,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit-ci"/>
 
     <target name="clean" description="Cleanup build artifacts">
         <delete dir="build/artifacts/coverage"/>
@@ -52,6 +52,15 @@
             <arg value="echo '${changeset.php.spacesep}' | xargs -n 1 -P 4 php -l 1>/dev/null"/>
         </exec>
         <echo message="OK"/>
+    </target>
+
+    <target name="jshint-ci">
+        <exec executable="node" failonerror="true" output="build/artifacts/logs/checkstyle-jshint.xml">
+            <arg value="vendor/bin/jshint"/>
+            <arg value="--config=.jshintrc"/>
+                        <arg value="--reporter=checkstyle"/>
+                        <arg value="src"/>
+        </exec>
     </target>
 
     <target name="phpmd-ci"

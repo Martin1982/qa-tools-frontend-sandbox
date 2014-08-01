@@ -3,7 +3,7 @@
 <project name="Qaproject-pre-commit" default="build">
 
     <target name="build"
-            depends="prepare-environment,php-lint,phpmd,phpcs,phpunit"/>
+            depends="prepare-environment,php-lint,jshint,phpmd,phpcs,phpunit"/>
 
     <target name="prepare-environment" depends="set-test-tree-location,get-changeset,composer-run-install">
         <echo message="OK"/>
@@ -93,7 +93,7 @@
     <target name="get-changeset.js" unless="changeset.js.executed">
         <property name="changeset.js.executed" value="true"/>
         <exec executable="${basedir}/vendor/bin/qa-tools" outputProperty="changeset.js.spacesep">
-            <arg line="changeset:pre-commit --filter-path= --filter-ext=js --separator=' '"/>
+            <arg line="changeset:pre-commit --filter-path=src --filter-ext=js --separator=' '"/>
         </exec>
         <condition property="changeset.js.notempty">
             <not>
@@ -143,6 +143,15 @@
         <exec executable="sh" failonerror="true">
             <arg value="-c"/>
             <arg value="echo '${changeset.php.absolute.newlinesep}' | xargs -n 1 -P 4 php -l 1>/dev/null"/>
+        </exec>
+        <echo message="OK"/>
+    </target>
+
+    <target name="jshint" depends="set-test-tree-location,get-changeset.js-absolute.spacesep" if="changeset.js.notempty">
+        <exec executable="node" failonerror="true">
+            <arg value="${test-tree-location}/vendor/bin/jshint"/>
+            <arg value="--config=${test-tree-location}/.jshintrc"/>
+            <arg line="${changeset.js.absolute.spacesep}"/>
         </exec>
         <echo message="OK"/>
     </target>
