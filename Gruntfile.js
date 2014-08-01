@@ -3,6 +3,9 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    htmlhint: {
+        src: ['src/**/*.html']
+    },
     jshint: {
         // jshintrc: '.jshintrc',
         all: ['src/**/*.js', 'test/**/*.js']
@@ -30,6 +33,7 @@ module.exports = function(grunt) {
   });
 
   // Load the plugin that provides the "uglify" task.
+  grunt.loadNpmTasks('grunt-htmlhint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -38,6 +42,6 @@ module.exports = function(grunt) {
   // Runnable task(s).
   grunt.registerTask('default', ['pre-deploy', 'qa']);
   grunt.registerTask('unittest', ['connect', 'qunit']);
-  grunt.registerTask('qa', ['jshint', 'csslint', 'unittest']);
+  grunt.registerTask('qa', ['htmlhint' ,'jshint', 'csslint', 'unittest']);
   grunt.registerTask('pre-deploy', []);
 };
